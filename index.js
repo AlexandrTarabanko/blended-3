@@ -85,21 +85,21 @@
 https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 */
 
-const place = document.getElementById('place');
-document.addEventListener('click', onClick);
+// const place = document.getElementById('place');
+// document.addEventListener('click', onClick);
 
-function onClick(evt){
-    // if(evt.target === place){
-    //     console.log("Bingo!")
-    // } else {
-    //     console.log("Fiasco!")
-    // }
-if(place.contains(evt.target)){
-    console.log("Bingo!")
-    } else {
-        console.log("Fiasco!")
-    }
-}
+// function onClick(evt){
+//     // if(evt.target === place){
+//     //     console.log("Bingo!")
+//     // } else {
+//     //     console.log("Fiasco!")
+//     // }
+// if(place.contains(evt.target)){
+//     console.log("Bingo!")
+//     } else {
+//         console.log("Fiasco!")
+//     }
+// }
 
 
 
@@ -111,6 +111,25 @@ if(place.contains(evt.target)){
 По клику на кнопку "Удвоить" увеличить значение
 в каждом элементе списка в 2 раза
 */
+
+// const li = document.querySelectorAll('ul .listItem');
+// const btn = document.querySelector('#double');
+
+
+// btn.addEventListener('click', doblePower);
+
+// function doblePower () {
+
+//     for (let index = 0; index < li.length; index += 1) {
+//         li[index].textContent *= 2; 
+//     }
+//     // _________________________або
+
+//     li.forEach(element => {
+
+//         element.textContent *= 2;        
+//     });
+// }
 
 // ===================================================
 // ===================================================
