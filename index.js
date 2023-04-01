@@ -57,24 +57,24 @@
 Кнопка "Уменьшить" делает квадрат меньше на 10 пикселей, кпопка "Увеличить" - больше на 10 пикселей.
 */
 
-const firstBtn = document.querySelector('#decrease');
-const secondBtn = document.querySelector('#increase');
-const box = document.querySelector('#box');
+// const firstBtn = document.querySelector('#decrease');
+// const secondBtn = document.querySelector('#increase');
+// const box = document.querySelector('#box');
 
 
-firstBtn.addEventListener('click', firstClick);
-secondBtn.addEventListener('click', seconClick);
+// firstBtn.addEventListener('click', firstClick);
+// secondBtn.addEventListener('click', seconClick);
 
-function firstClick() {
-    const widthBox = box.offsetWidth;
-    box.style.width = `${widthBox - 10}px `
-    box.style.height = `${widthBox - 10}px`
-}
-function seconClick() {
-    const widthBox = box.offsetWidth;
-    box.style.width = `${widthBox + 10}px `
-    box.style.height = `${widthBox + 10}px`
-}
+// function firstClick() {
+//     const widthBox = box.offsetWidth;
+//     box.style.width = `${widthBox - 10}px `
+//     box.style.height = `${widthBox - 10}px`
+// }
+// function seconClick() {
+//     const widthBox = box.offsetWidth;
+//     box.style.width = `${widthBox + 10}px `
+//     box.style.height = `${widthBox + 10}px`
+// }
 // ===================================================
 // ===================================================
 
@@ -84,6 +84,24 @@ function seconClick() {
 внутри элемента с id "place" и когда клик приходится вне зоны элемента
 https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 */
+
+const place = document.getElementById('place');
+document.addEventListener('click', onClick);
+
+function onClick(evt){
+    // if(evt.target === place){
+    //     console.log("Bingo!")
+    // } else {
+    //     console.log("Fiasco!")
+    // }
+if(place.contains(evt.target)){
+    console.log("Bingo!")
+    } else {
+        console.log("Fiasco!")
+    }
+}
+
+
 
 // ===================================================
 // ===================================================
