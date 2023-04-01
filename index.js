@@ -142,6 +142,29 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent
 https://developer.mozilla.org/ru/docs/Web/API/MouseEvent/pageX
 https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 */
+// const innerCircle = document.querySelector('.innerCircle');
+
+// innerCircle.addEventListener('click', onClick)
+// function onClick(e){
+//   const position = innerCircle.style.position;
+//   if(position === "absolute") {
+//     innerCircle.style.position = "static";
+//     innerCircle.style.transform = "translate(0)"
+//     document.removeEventListener("mousemove", onMousmove)
+//   } else{
+//     innerCircle.style.position = "absolute"
+//     innerCircle.style.transform = "translate(-50%, -50%)"
+//     document.addEventListener("mousemove", onMousmove)
+//   }
+
+// }
+// function onMousmove(evt){
+//   const left = evt.pageX;
+//   const top = evt.pageY;
+//   innerCircle.style.top = `${top}px`;
+//   innerCircle.style.left = `${left}px`;
+// }
+
 
 // ===================================================
 // ===================================================
