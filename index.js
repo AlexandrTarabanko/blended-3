@@ -16,16 +16,16 @@
 Задача 2
 По нажатию на кнопку "SWAP ME" осуществляется обмен содержимым между двумя инпутами. 
 можете понажимать на нее несколько раз или вручную сменить содержимое инпутов.
-*/
-const btnEl = document.querySelector('#swapButton')
-const leftInput = document.querySelector('#leftSwapInput')
-const rightInput = document.querySelector('#rightSwapInput')
-btnEl.addEventListener('click', onClick)
-function onClick(e) {
-    const banka = leftInput.value
-    leftInput.value = rightInput.value
-    rightInput.value = banka
-}
+// */
+// const btnEl = document.querySelector('#swapButton')
+// const leftInput = document.querySelector('#leftSwapInput')
+// const rightInput = document.querySelector('#rightSwapInput')
+// btnEl.addEventListener('click', onClick)
+// function onClick(e) {
+//     const banka = leftInput.value
+//     leftInput.value = rightInput.value
+//     rightInput.value = banka
+// }
 // ===================================================
 // ===================================================
 
@@ -35,6 +35,19 @@ function onClick(e) {
 "Раскрыть", при повторном нажатии текст снова становится доступен
 и кнопка принимает начальный вид.
 */
+// const btn = document.querySelector('#passwordButton')
+// const input = document.querySelector('#passwordInput')
+// btn.addEventListener('click', onClick)
+
+// function onClick() {
+//     if (input.type === 'text') {
+//         input.type = 'password'
+//         btn.textContent = 'Раскрыть'
+//     } else {
+//         input.type = 'text'
+//         btn.textContent = 'Скрыть'
+//     }
+// }
 
 // ===================================================
 // ===================================================
