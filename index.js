@@ -2,7 +2,13 @@
 Задача 1
 Нажатие на кновку "SHOW ME" должно выводить значение с поля ввода (смотрите на элементы в html-разметке)
 */
-
+const btnRef = document.querySelector('#alertButton')
+const inputRef = document.querySelector('#alertInput')
+btnRef.addEventListener('click', onClick)
+function onClick(event) {
+    const message = inputRef.value
+    alert(message)
+}
 // ===================================================
 // ===================================================
 
