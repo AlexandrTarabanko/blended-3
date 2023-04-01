@@ -57,6 +57,24 @@
 Кнопка "Уменьшить" делает квадрат меньше на 10 пикселей, кпопка "Увеличить" - больше на 10 пикселей.
 */
 
+const firstBtn = document.querySelector('#decrease');
+const secondBtn = document.querySelector('#increase');
+const box = document.querySelector('#box');
+
+
+firstBtn.addEventListener('click', firstClick);
+secondBtn.addEventListener('click', seconClick);
+
+function firstClick() {
+    const widthBox = box.offsetWidth;
+    box.style.width = `${widthBox - 10}px `
+    box.style.height = `${widthBox - 10}px`
+}
+function seconClick() {
+    const widthBox = box.offsetWidth;
+    box.style.width = `${widthBox + 10}px `
+    box.style.height = `${widthBox + 10}px`
+}
 // ===================================================
 // ===================================================
 
