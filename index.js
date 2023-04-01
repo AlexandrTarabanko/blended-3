@@ -2,13 +2,13 @@
 Задача 1
 Нажатие на кновку "SHOW ME" должно выводить значение с поля ввода (смотрите на элементы в html-разметке)
 */
-const btnRef = document.querySelector('#alertButton')
-const inputRef = document.querySelector('#alertInput')
-btnRef.addEventListener('click', onClick)
-function onClick(event) {
-    const message = inputRef.value
-    alert(message)
-}
+// const btnRef = document.querySelector('#alertButton')
+// const inputRef = document.querySelector('#alertInput')
+// btnRef.addEventListener('click', onClick)
+// function onClick(event) {
+//     const message = inputRef.value
+//     alert(message)
+// }
 // ===================================================
 // ===================================================
 
@@ -17,7 +17,15 @@ function onClick(event) {
 По нажатию на кнопку "SWAP ME" осуществляется обмен содержимым между двумя инпутами. 
 можете понажимать на нее несколько раз или вручную сменить содержимое инпутов.
 */
-
+const btnEl = document.querySelector('#swapButton')
+const leftInput = document.querySelector('#leftSwapInput')
+const rightInput = document.querySelector('#rightSwapInput')
+btnEl.addEventListener('click', onClick)
+function onClick(e) {
+    const banka = leftInput.value
+    leftInput.value = rightInput.value
+    rightInput.value = banka
+}
 // ===================================================
 // ===================================================
 
