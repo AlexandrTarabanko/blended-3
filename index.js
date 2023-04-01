@@ -61,7 +61,6 @@
 // const secondBtn = document.querySelector('#increase');
 // const box = document.querySelector('#box');
 
-
 // firstBtn.addEventListener('click', firstClick);
 // secondBtn.addEventListener('click', seconClick);
 
@@ -101,8 +100,6 @@ https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 //     }
 // }
 
-
-
 // ===================================================
 // ===================================================
 
@@ -115,19 +112,18 @@ https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 // const li = document.querySelectorAll('ul .listItem');
 // const btn = document.querySelector('#double');
 
-
 // btn.addEventListener('click', doblePower);
 
 // function doblePower () {
 
 //     for (let index = 0; index < li.length; index += 1) {
-//         li[index].textContent *= 2; 
+//         li[index].textContent *= 2;
 //     }
 //     // _________________________або
 
 //     li.forEach(element => {
 
-//         element.textContent *= 2;        
+//         element.textContent *= 2;
 //     });
 // }
 
@@ -165,7 +161,6 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 //   innerCircle.style.left = `${left}px`;
 // }
 
-
 // ===================================================
 // ===================================================
 
@@ -175,14 +170,54 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 По нажатию на кнопку "Вывести результат" выводится сумма значения, а также статистика с
 информацией о том, какая кнопка была нажата сколько раз.
 */
+// const statListRef = document.querySelector('.statList')
+// const resultBtn = document.querySelector('#resultButton')
+// const resultSection = document.querySelector('#resultSection')
+// resultSection.style.backgroundColor = 'red'
+// resultSection.style.display = 'inline'
+// resultSection.style.color = 'white'             // Инлайн стили для только для декора
+// resultSection.style.fontSize = '24px'
+// let initalValue = 0
+
+// statListRef.addEventListener('click', onIncreaseClick)
+// resultBtn.addEventListener('click', onResultClick)
+
+// function onIncreaseClick(e) {
+//     const addValue = Number(e.target.dataset.number)
+//     initalValue += addValue
+//     console.log(initalValue) // Проверка поточного числа
+// }
+// function onResultClick() {
+//     resultSection.textContent = initalValue
+// }
 
 // ===================================================
 // ===================================================
 
 /*
-Задача 9
+Задача 9 // ЕЩЁ НЕ РЕШЕНА 
 Удали из списка те элементы, которые отмечены.
 */
+// const formRef = document.querySelector('.checkboxForm')
+// const allInputRef = document.querySelectorAll('input[type="checkbox"]')
+// const filterBtnRef = document.querySelector('button[type="submit"]')
+
+// // console.log(allInputRef)
+// const onInputClick = (e) => {
+//     if (!e.target === 'INPUT') {
+//         return
+//     }
+// }
+
+// const onFilter = (e) => {
+//     if (!e.target.checked) {
+//         const toDeleteEl = e.target.closest('div')
+//         toDeleteEl.style.display = 'none'
+//     }
+// }
+
+// formRef.addEventListener('click', onInputClick)
+// filterBtnRef.addEventListener('click', onFilter)
 
 // ===================================================
 // ===================================================
