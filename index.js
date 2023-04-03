@@ -170,12 +170,20 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 По нажатию на кнопку "Вывести результат" выводится сумма значения, а также статистика с
 информацией о том, какая кнопка была нажата сколько раз.
 */
+// const clickObj = {
+//     firstbtn: 0,
+//     secondbtn: 0,
+//     thirdbtn: 0,
+//     fourthbtn: 0,
+//     fifthbtn: 0,
+//     sixthbtn: 0,
+// }
 // const statListRef = document.querySelector('.statList')
 // const resultBtn = document.querySelector('#resultButton')
 // const resultSection = document.querySelector('#resultSection')
 // resultSection.style.backgroundColor = 'red'
 // resultSection.style.display = 'inline'
-// resultSection.style.color = 'white'             // Инлайн стили для только для декора
+// resultSection.style.color = 'white' // Инлайн стили для только для декора
 // resultSection.style.fontSize = '24px'
 // let initalValue = 0
 
@@ -184,8 +192,25 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 
 // function onIncreaseClick(e) {
 //     const addValue = Number(e.target.dataset.number)
+
 //     initalValue += addValue
 //     console.log(initalValue) // Проверка поточного числа
+
+//     if (addValue === 5) {
+//         clickObj.firstbtn += 1
+//     } else if (addValue === 2) {
+//         clickObj.secondbtn += 1
+//     } else if (addValue === 10) {
+//         clickObj.thirdbtn += 1
+//     } else if (addValue === 50) {
+//         clickObj.fourthbtn += 1
+//     } else if (addValue === 0) {
+//         clickObj.fifthbtn += 1
+//     } else {
+//         clickObj.sixthbtn += 1
+//     }
+
+//     console.log(clickObj)
 // }
 // function onResultClick() {
 //     resultSection.textContent = initalValue
@@ -195,38 +220,60 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 // ===================================================
 
 /*
-Задача 9 // ЕЩЁ НЕ РЕШЕНА 
+Задача 9 
 Удали из списка те элементы, которые отмечены.
 */
-// const formRef = document.querySelector('.checkboxForm')
-// const allInputRef = document.querySelectorAll('input[type="checkbox"]')
+// const mainDivRef = document.querySelector('.checkboxList')
 // const filterBtnRef = document.querySelector('button[type="submit"]')
 
-// // console.log(allInputRef)
-// const onInputClick = (e) => {
-//     if (!e.target === 'INPUT') {
+// const onInput = (e) => {
+//     if (e.target.nodeName !== 'INPUT') {
 //         return
 //     }
-// }
-
-// const onFilter = (e) => {
-//     if (!e.target.checked) {
-//         const toDeleteEl = e.target.closest('div')
-//         toDeleteEl.style.display = 'none'
+//     if (e.target.checked) {
+//         const nearestDiv = e.target.closest('div')
+//         const onFilter = (e) => {
+//             e.preventDefault()
+//             nearestDiv.style.display = 'none'
+//         }
+//         filterBtnRef.addEventListener('click', onFilter)
 //     }
 // }
 
-// formRef.addEventListener('click', onInputClick)
-// filterBtnRef.addEventListener('click', onFilter)
+// mainDivRef.addEventListener('click', onInput)
 
 // ===================================================
 // ===================================================
 
 /*
-Задача 10
+Задача 10  !!!НЕ РЕШЕНА!!!
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
+const li = document.querySelectorAll('.person')
+const sortByNameBtn = document.querySelectorAll('#sortByNameButton')
+const sortBySurnameBtn = document.querySelectorAll('#sortByLastNameButton')
 
+// const onNamesClick = (e) => {
+//     const allNamesAndSurnames = [...li];
+
+// }
+
+console.log(li.textContent)
+
+const onNamesClick = () => {
+    const allNamesAndSurnames = [...li.textContent]
+    let res = allNamesAndSurnames.slice().sort((a, b) => {
+        let [aNames, aSurname] = a.match(/(.*)\s(\w+)$/).slice(1)
+        let [bNames, bSurname] = b.match(/(.*)\s(\w+)$/).slice(1)
+
+        if (aSurname.localeCompare(bSurname))
+            return aSurname.localeCompare(bSurname)
+        else return aNames.localeCompare(bNames)
+    })
+}
+
+// sortByNameBtn.addEventlistener('click', onNamesClick)
+// sortBySurnameBtn.addEventlistener('click', onSurnameClick)
 // ===================================================
 // ===================================================
 
