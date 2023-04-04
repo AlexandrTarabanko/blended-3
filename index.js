@@ -246,34 +246,43 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 // ===================================================
 
 /*
-Задача 10  !!!НЕ РЕШЕНА!!!
+Задача 10  
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
-const li = document.querySelectorAll('.person')
-const sortByNameBtn = document.querySelectorAll('#sortByNameButton')
-const sortBySurnameBtn = document.querySelectorAll('#sortByLastNameButton')
+// const allLi = Array.from(document.querySelectorAll('.person'))
+// const sortByNameBtn = document.querySelector('#sortByNameButton')
+// const sortBySurnameBtn = document.querySelector('#sortByLastNameButton')
 
-// const onNamesClick = (e) => {
-//     const allNamesAndSurnames = [...li];
-
+// const onNamesClick = () => {
+//     const arrayToSort = []
+//     for (const li of allLi) {
+//         const nameArray = li.textContent.split(' ')
+//         const name = nameArray[0]
+//         arrayToSort.push(name)
+//     }
+//     const sortedArray = arrayToSort.sort()
+//     console.log(sortedArray)
 // }
 
-console.log(li.textContent)
+// const onSurnameClick = () => {
+//     const arrayToSort = []
+//     for (const li of allLi) {
+//         const nameArray = li.textContent.split(' ')
+//         const surname = nameArray[1]
+//         arrayToSort.push(surname)
+//     }
+//     const sortedArray = arrayToSort.sort()
 
-const onNamesClick = () => {
-    const allNamesAndSurnames = [...li.textContent]
-    let res = allNamesAndSurnames.slice().sort((a, b) => {
-        let [aNames, aSurname] = a.match(/(.*)\s(\w+)$/).slice(1)
-        let [bNames, bSurname] = b.match(/(.*)\s(\w+)$/).slice(1)
+//     for (const surname of sortedArray) {
+//         allLi.forEach(function (el, idx) {
+//             el.textContent = surname
+//             idx -= 1
+//         })
+//     }
+// }
 
-        if (aSurname.localeCompare(bSurname))
-            return aSurname.localeCompare(bSurname)
-        else return aNames.localeCompare(bNames)
-    })
-}
-
-// sortByNameBtn.addEventlistener('click', onNamesClick)
-// sortBySurnameBtn.addEventlistener('click', onSurnameClick)
+// sortByNameBtn.addEventListener('click', onNamesClick)
+// sortBySurnameBtn.addEventListener('click', onSurnameClick)
 // ===================================================
 // ===================================================
 
