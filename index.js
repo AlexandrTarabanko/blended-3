@@ -249,40 +249,55 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 Задача 10  
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
-// const allLi = Array.from(document.querySelectorAll('.person'))
-// const sortByNameBtn = document.querySelector('#sortByNameButton')
-// const sortBySurnameBtn = document.querySelector('#sortByLastNameButton')
+const mainUl = document.querySelector('.people')
+const allLi = Array.from(document.querySelectorAll('.person'))
+const sortByNameBtn = document.querySelector('#sortByNameButton')
+const sortBySurnameBtn = document.querySelector('#sortByLastNameButton')
 
-// const onNamesClick = () => {
-//     const arrayToSort = []
-//     for (const li of allLi) {
-//         const nameArray = li.textContent.split(' ')
-//         const name = nameArray[0]
-//         arrayToSort.push(name)
-//     }
-//     const sortedArray = arrayToSort.sort()
-//     console.log(sortedArray)
-// }
+// По имени
+const onNamesClick = () => {
+    // const arrayToSort = []
+    // for (const li of allLi) {
+    //     const nameArray = li.textContent.split(' ') // Разделяю имя и фамилию
+    //     const name = nameArray[0] // Выбираю имя
+    //     arrayToSort.push(name)
+    // }
+    // const sortedArray = arrayToSort.sort() // Массив с именами
+    // console.log(sortedArray)
 
-// const onSurnameClick = () => {
-//     const arrayToSort = []
-//     for (const li of allLi) {
-//         const nameArray = li.textContent.split(' ')
-//         const surname = nameArray[1]
-//         arrayToSort.push(surname)
-//     }
-//     const sortedArray = arrayToSort.sort()
+    const sortedLi = allLi.sort((a, b) =>
+        a.textContent.localeCompare(b.textContent)
+    )
 
-//     for (const surname of sortedArray) {
-//         allLi.forEach(function (el, idx) {
-//             el.textContent = surname
-//             idx -= 1
-//         })
-//     }
-// }
+    console.log(sortedLi)
 
-// sortByNameBtn.addEventListener('click', onNamesClick)
-// sortBySurnameBtn.addEventListener('click', onSurnameClick)
+    const sortedMarkup = sortedLi.map(
+        (a) => `<li class="person">${a.textContent}</li>`
+    )
+
+    console.log(sortedMarkup)
+
+    mainUl.innerHTML = sortedMarkup
+}
+
+// По Фамилии
+const onSurnameClick = () => {
+    // const arrayToSort = []
+    // for (const li of allLi) {
+    //     const nameArray = li.textContent.split(' ') // Разделяю имя и фамилию
+    //     const surname = nameArray[1] // Выбираю фамилию
+    //     arrayToSort.push(surname)
+    // }
+    // const sortedArray = arrayToSort.sort() // Массив с фамилиями
+    // for (const surname of sortedArray) {
+    //     for (const li of allLi) {
+    //         li.textContent = surname
+    //     }
+    // }
+}
+
+sortByNameBtn.addEventListener('click', onNamesClick)
+sortBySurnameBtn.addEventListener('click', onSurnameClick)
 // ===================================================
 // ===================================================
 
