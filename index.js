@@ -249,55 +249,46 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 Задача 10  
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
-const mainUl = document.querySelector('.people')
-const allLi = Array.from(document.querySelectorAll('.person'))
-const sortByNameBtn = document.querySelector('#sortByNameButton')
-const sortBySurnameBtn = document.querySelector('#sortByLastNameButton')
+// const mainUl = document.querySelector('.people')
+// const allLi = Array.from(document.querySelectorAll('.person'))
+// const sortByNameBtn = document.querySelector('#sortByNameButton')
+// const sortBySurnameBtn = document.querySelector('#sortByLastNameButton')
+// const arrToSort = []
 
-// По имени
-const onNamesClick = () => {
-    // const arrayToSort = []
-    // for (const li of allLi) {
-    //     const nameArray = li.textContent.split(' ') // Разделяю имя и фамилию
-    //     const name = nameArray[0] // Выбираю имя
-    //     arrayToSort.push(name)
-    // }
-    // const sortedArray = arrayToSort.sort() // Массив с именами
-    // console.log(sortedArray)
+// const arrForEach = allLi.map((a) => a.textContent)
 
-    const sortedLi = allLi.sort((a, b) =>
-        a.textContent.localeCompare(b.textContent)
-    )
+// arrForEach.forEach((a) => {
+//     const personData = a.split(' ')
+//     const obj = {}
+//     obj.name = personData[0]
+//     obj.lastname = personData[1]
+//     arrToSort.push(obj)
+// })
 
-    console.log(sortedLi)
+// // По имени
+// const onNamesClick = () => {
+//     const sortedArray = arrToSort.sort((a, b) => a.name.localeCompare(b.name))
+//     createNewList(sortedArray)
+// }
 
-    const sortedMarkup = sortedLi.map(
-        (a) => `<li class="person">${a.textContent}</li>`
-    )
+// // По Фамилии
+// const onSurnameClick = () => {
+//     const sortedArray = arrToSort.sort((a, b) =>
+//         a.lastname.localeCompare(b.lastname)
+//     )
+//     createNewList(sortedArray)
+// }
 
-    console.log(sortedMarkup)
+// function createNewList(arr) {
+//     const array = arr
+//         .map((item) => `<li class="person">${item.name} ${item.lastname}</li>`)
+//         .join('')
 
-    mainUl.innerHTML = sortedMarkup
-}
+//     mainUl.innerHTML = array
+// }
 
-// По Фамилии
-const onSurnameClick = () => {
-    // const arrayToSort = []
-    // for (const li of allLi) {
-    //     const nameArray = li.textContent.split(' ') // Разделяю имя и фамилию
-    //     const surname = nameArray[1] // Выбираю фамилию
-    //     arrayToSort.push(surname)
-    // }
-    // const sortedArray = arrayToSort.sort() // Массив с фамилиями
-    // for (const surname of sortedArray) {
-    //     for (const li of allLi) {
-    //         li.textContent = surname
-    //     }
-    // }
-}
-
-sortByNameBtn.addEventListener('click', onNamesClick)
-sortBySurnameBtn.addEventListener('click', onSurnameClick)
+// sortByNameBtn.addEventListener('click', onNamesClick)
+// sortBySurnameBtn.addEventListener('click', onSurnameClick)
 // ===================================================
 // ===================================================
 
@@ -305,7 +296,23 @@ sortBySurnameBtn.addEventListener('click', onSurnameClick)
 Задача 11
 Дан список людей. Сделай фильтр по имени/фамилии.
 */
+// const ulRef = document.querySelector('.contacts')
+// const inputRef = document.querySelector('.contactsFilter')
 
+// const onInputSearch = (e) => {
+//     const value = e.target.value.toLowerCase()
+//     const names = ulRef.getElementsByTagName('li')
+//     const filter = [...names].forEach((a) => {
+//         const nameToSearch = a.textContent
+//         if (nameToSearch.toLowerCase().indexOf(value) != -1) {
+//             a.style.display = 'block'
+//         } else {
+//             a.style.display = 'none'
+//         }
+//     })
+// }
+
+// inputRef.addEventListener('keydown', onInputSearch)
 // ===================================================
 // ===================================================
 
@@ -316,6 +323,33 @@ sortBySurnameBtn.addEventListener('click', onSurnameClick)
 Если одно из полей пустое, вызывай alert с просьбой заполнить их.
 */
 
+// const firstInput = document.querySelector('#from')
+// const secondInput = document.querySelector('#to')
+// const buttonRef = document.querySelector('#replaceButton')
+// const textRef = document.querySelector('.text')
+
+// const text = textRef.textContent.toLowerCase()
+
+// const onfirstInput = (e) => {}
+// const onSecondInput = (e) => {}
+// const onBtnClick = () => {
+//     if (firstInput.value === '' || secondInput.value === '') {
+//         alert('Please, fill every input in the task')
+//         return
+//     }
+
+//     const valueToFind = firstInput.value
+//     const valueToInsert = secondInput.value
+//     console.log('TO FIND:', valueToFind)
+//     console.log('TO INSERT:', valueToInsert)
+
+//     const result = text.replace(valueToFind, valueToInsert)
+//     textRef.innerHTML = result
+// }
+
+// firstInput.addEventListener('input', onfirstInput)
+// secondInput.addEventListener('input', onSecondInput)
+// buttonRef.addEventListener('click', onBtnClick)
 // ===================================================
 // ===================================================
 
@@ -324,3 +358,22 @@ sortBySurnameBtn.addEventListener('click', onSurnameClick)
 Круг должен изчезать при наведении на него.
 При этом позиция соседних кругов должна оставаться прежней.
 */
+// const ulRef = document.querySelector('.grid')
+// let mousePos = { x: 0, y: 0 }
+
+// // window.addEventListener('mousemove', (e) => {
+// //     mousePos = { x: e.clientX, y: e.clientY }
+// // })
+
+// // console.log(mousePos)
+
+// const onHover = (e) => {
+//     if (e.target.nodeName !== 'LI') {
+//         return
+//     }
+//     // if (localX === e.target.pageX || localY === e.target.pageY) {
+//     // }
+//     e.target.style.display = 'none'
+//     console.log('Hover')
+// }
+// ulRef.addEventListener('mouseover', onHover)
