@@ -377,3 +377,78 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 //     console.log('Hover')
 // }
 // ulRef.addEventListener('mouseover', onHover)
+
+// * ЗАДАЧА 8
+//  * Створи перелік справ.
+//  * Є  інпут, в який вноситься зміст задачі.
+//  * При натисканні на кнопку "Додати" задача додається в список #list.
+//  * Поруч з кожною задачею знаходится кнопка "Видалити", щоб можна було
+//  * видалити цю задачу із списку.
+//  * Список з задачами має бути доступним післе перезавантаження сторінки.
+//  */
+
+const formRef = document.querySelector('#task-form')
+const listRef = document.querySelector('#task-list')
+const STORAGE_KEY = 'tasks'
+
+populate()
+console.log(formRef.elements)
+
+const onSubmit = (e) => {
+    e.preventDefault()
+    const inputValue = e.target.elements.taskName.value.trim()
+
+    if (!inputValue) {
+        return
+    }
+
+    const arr = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+
+    const id = Date.now()
+
+    arr.push({ inputValue, id })
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr))
+
+    const markup = `<li>
+                <p>${inputValue}</p>
+                <button type="button" class="remove-btn" data-id='${id}'>Delete</button>
+            </li>`
+
+    listRef.insertAdjacentHTML('beforeend', markup)
+    e.target.reset()
+}
+
+function onClick(e) {
+    const localArr = JSON.parse(localStorage.getItem(STORAGE_KEY))
+
+    if (!e.target.classList.contains('remove-btn')) {
+        return
+    }
+
+    e.target.closest('li').remove()
+
+    console.log(e.target.dataset.id)
+    const filteredArr = localArr.filter(
+        (item) => String(item.id) !== e.target.dataset.id
+    )
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredArr))
+}
+
+function populate() {
+    const localArr = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+    const markup = localArr
+        .map(
+            ({ inputValue, id }) => `<li>
+                <p>${inputValue}</p>
+                <button type="button" class="remove-btn" data-id='${id}'>Delete</button>
+            </li>`
+        )
+        .join('')
+
+    listRef.innerHTML = markup
+    listRef.addEventListener('click', onClick)
+}
+
+formRef.addEventListener('submit', onSubmit)
