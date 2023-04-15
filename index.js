@@ -389,10 +389,21 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 
 const formRef = document.querySelector('#task-form')
 const listRef = document.querySelector('#task-list')
+const inputRef = document.querySelector('[name="taskName"]')
+const btnRef = document.querySelector('[name="taskBtn"]')
 const STORAGE_KEY = 'tasks'
 
 populate()
-console.log(formRef.elements)
+
+const onInput = (e) => {
+    const btn = e.target.closest('form').elements.taskBtn
+
+    if (!e.target.value) {
+        btn.disabled = true
+    } else {
+        btn.disabled = false
+    }
+}
 
 const onSubmit = (e) => {
     e.preventDefault()
@@ -402,25 +413,21 @@ const onSubmit = (e) => {
         return
     }
 
-    const arr = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+    const arr = getDataFromLS(STORAGE_KEY) || []
 
     const id = Date.now()
 
     arr.push({ inputValue, id })
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr))
+    setDataToLS(arr)
 
-    const markup = `<li>
-                <p>${inputValue}</p>
-                <button type="button" class="remove-btn" data-id='${id}'>Delete</button>
-            </li>`
-
-    listRef.insertAdjacentHTML('beforeend', markup)
+    listRef.insertAdjacentHTML('beforeend', getMarkup({ inputValue, id }))
     e.target.reset()
+    e.target.elements.taskBtn.disabled = true
 }
 
 function onClick(e) {
-    const localArr = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    const localArr = getDataFromLS(STORAGE_KEY)
 
     if (!e.target.classList.contains('remove-btn')) {
         return
@@ -428,27 +435,36 @@ function onClick(e) {
 
     e.target.closest('li').remove()
 
-    console.log(e.target.dataset.id)
     const filteredArr = localArr.filter(
         (item) => String(item.id) !== e.target.dataset.id
     )
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredArr))
+    setDataToLS(filteredArr)
 }
 
 function populate() {
-    const localArr = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
-    const markup = localArr
-        .map(
-            ({ inputValue, id }) => `<li>
-                <p>${inputValue}</p>
-                <button type="button" class="remove-btn" data-id='${id}'>Delete</button>
-            </li>`
-        )
-        .join('')
+    btnRef.disabled = true
+    const localArr = getDataFromLS(STORAGE_KEY) || []
+    const markup = localArr.map(getMarkup).join('')
 
     listRef.innerHTML = markup
     listRef.addEventListener('click', onClick)
 }
 
+function getDataFromLS(key) {
+    return JSON.parse(localStorage.getItem(key))
+}
+
+function getMarkup({ inputValue, id }) {
+    return `<li>
+                <p>${inputValue}</p>
+                <button type="button" class="remove-btn" data-id='${id}'>Delete</button>
+            </li>`
+}
+
+function setDataToLS(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr))
+}
+
 formRef.addEventListener('submit', onSubmit)
+inputRef.addEventListener('input', onInput)
